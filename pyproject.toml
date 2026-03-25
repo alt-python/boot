@@ -1,0 +1,31 @@
+[project]
+name = "alt-python-boot"
+version = "0.1.0"
+description = "alt-python/boot monorepo — pysypt, config, logger"
+requires-python = ">=3.12"
+dependencies = [
+    "common",
+    "pysypt",
+    "config",
+    "logger",
+]
+
+[tool.uv.workspace]
+members = [
+    "packages/common",
+    "packages/pysypt",
+    "packages/config",
+    "packages/logger",
+]
+
+[tool.uv.sources]
+common = { workspace = true }
+pysypt = { workspace = true }
+config = { workspace = true }
+logger = { workspace = true }
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0",
+    "pytest-cov>=5.0",
+]

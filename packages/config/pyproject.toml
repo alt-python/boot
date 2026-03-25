@@ -1,0 +1,21 @@
+[project]
+name = "config"
+version = "0.1.0"
+description = "Spring-inspired profile-aware config for Python"
+requires-python = ">=3.12"
+dependencies = [
+    "pysypt",
+    "common",
+    "PyYAML>=6.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.uv.sources]
+pysypt = { workspace = true }
+common = { workspace = true }
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
