@@ -4,6 +4,9 @@ logger.json_formatter — Formats log entries as JSON strings.
 
 from __future__ import annotations
 
+__author__ = "Craig Parravicini"
+__collaborators__ = ["Claude (Anthropic)"]
+
 import json
 from datetime import datetime
 from typing import Any

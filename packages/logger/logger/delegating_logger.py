@@ -4,6 +4,9 @@ logger.delegating_logger — Logger that delegates all calls to a provider.
 
 from __future__ import annotations
 
+__author__ = "Craig Parravicini"
+__collaborators__ = ["Claude (Anthropic)"]
+
 from typing import Any
 
 from logger.logger import Logger

@@ -14,6 +14,9 @@ Format selection:
 
 from __future__ import annotations
 
+__author__ = "Craig Parravicini"
+__collaborators__ = ["Claude (Anthropic)"]
+
 from typing import Any
 
 from logger.configurable_logger import ConfigurableLogger

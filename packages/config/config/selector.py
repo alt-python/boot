@@ -6,6 +6,9 @@ Selectors decide which config values should be processed by a resolver.
 
 from __future__ import annotations
 
+__author__ = "Craig Parravicini"
+__collaborators__ = ["Claude (Anthropic)"]
+
 from abc import ABC, abstractmethod
 
 

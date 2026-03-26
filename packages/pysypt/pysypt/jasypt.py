@@ -4,6 +4,9 @@ pysypt.jasypt — Thin facade matching the JS Jasypt class API.
 
 from __future__ import annotations
 
+__author__ = "Craig Parravicini"
+__collaborators__ = ["Claude (Anthropic)"]
+
 from typing import Optional
 
 from common import is_empty

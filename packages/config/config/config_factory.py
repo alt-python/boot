@@ -11,6 +11,9 @@ The module-level `config` singleton is usable with no setup.
 
 from __future__ import annotations
 
+__author__ = "Craig Parravicini"
+__collaborators__ = ["Claude (Anthropic)"]
+
 from typing import Any
 
 from config.profile_config_loader import ProfileConfigLoader

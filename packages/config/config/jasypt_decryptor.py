@@ -10,6 +10,9 @@ Password comes from PY_CONFIG_PASSPHRASE env var or defaults to 'changeit'.
 
 from __future__ import annotations
 
+__author__ = "Craig Parravicini"
+__collaborators__ = ["Claude (Anthropic)"]
+
 import os
 from typing import Any
 

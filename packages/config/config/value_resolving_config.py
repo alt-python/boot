@@ -7,6 +7,9 @@ get(path) re-resolves lazily for path-specific access (matches JS behaviour).
 
 from __future__ import annotations
 
+__author__ = "Craig Parravicini"
+__collaborators__ = ["Claude (Anthropic)"]
+
 from typing import Any
 
 from config.resolver import Resolver

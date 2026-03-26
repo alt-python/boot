@@ -22,6 +22,9 @@ Transparent value resolution:
   ENC(<b64>)        → jasypt PBE decryption (Spring-style)
 """
 
+__author__ = "Craig Parravicini"
+__collaborators__ = ["Claude (Anthropic)"]
+
 from config.ephemeral_config import EphemeralConfig
 from config.property_source_chain import PropertySourceChain
 from config.env_property_source import EnvPropertySource

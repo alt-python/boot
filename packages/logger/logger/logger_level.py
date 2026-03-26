@@ -19,6 +19,9 @@ JS → Python stdlib mapping:
 
 from __future__ import annotations
 
+__author__ = "Craig Parravicini"
+__collaborators__ = ["Claude (Anthropic)"]
+
 import logging
 
 # Register the custom VERBOSE level so stdlib logging knows about it

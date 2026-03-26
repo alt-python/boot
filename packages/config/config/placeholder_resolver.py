@@ -4,6 +4,9 @@ config.placeholder_resolver — Resolves ${path} and ${path:default} placeholder
 
 from __future__ import annotations
 
+__author__ = "Craig Parravicini"
+__collaborators__ = ["Claude (Anthropic)"]
+
 from typing import Any
 
 from config.resolver import SelectiveResolver

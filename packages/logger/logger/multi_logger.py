@@ -4,6 +4,9 @@ logger.multi_logger — Fan-out logger that writes to multiple loggers simultane
 
 from __future__ import annotations
 
+__author__ = "Craig Parravicini"
+__collaborators__ = ["Claude (Anthropic)"]
+
 from typing import Any
 
 from logger.logger import Logger

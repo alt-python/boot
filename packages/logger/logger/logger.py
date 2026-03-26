@@ -4,6 +4,9 @@ logger.logger — Base logger with level-gated methods.
 
 from __future__ import annotations
 
+__author__ = "Craig Parravicini"
+__collaborators__ = ["Claude (Anthropic)"]
+
 from logger.logger_level import LoggerLevel
 
 

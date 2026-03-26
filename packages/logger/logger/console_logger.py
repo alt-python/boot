@@ -10,6 +10,9 @@ string; the stdlib handler controls destination and encoding.
 
 from __future__ import annotations
 
+__author__ = "Craig Parravicini"
+__collaborators__ = ["Claude (Anthropic)"]
+
 import logging
 from datetime import datetime, timezone
 from typing import Any

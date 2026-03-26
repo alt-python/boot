@@ -15,6 +15,9 @@ Quick start::
     assert jasypt.matches("admin", stored) is True
 """
 
+__author__ = "Craig Parravicini"
+__collaborators__ = ["Claude (Anthropic)"]
+
 from pysypt.jasypt import Jasypt
 from pysypt.encryptor import Encryptor, SUPPORTED_ALGORITHMS
 from pysypt.digester import Digester, SUPPORTED_ALGORITHMS as SUPPORTED_DIGEST_ALGORITHMS

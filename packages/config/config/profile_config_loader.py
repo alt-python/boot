@@ -19,6 +19,9 @@ PY_ACTIVE_PROFILES: comma-separated list of active profiles.
 
 from __future__ import annotations
 
+__author__ = "Craig Parravicini"
+__collaborators__ = ["Claude (Anthropic)"]
+
 import json
 import os
 from pathlib import Path

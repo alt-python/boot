@@ -26,6 +26,9 @@ Log format (config key):
   logging.format=json         → JSONFormatter (default)
 """
 
+__author__ = "Craig Parravicini"
+__collaborators__ = ["Claude (Anthropic)"]
+
 from logger.logger_level import LoggerLevel
 from logger.logger import Logger
 from logger.console_logger import ConsoleLogger

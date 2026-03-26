@@ -4,6 +4,9 @@ logger.plain_text_formatter — Formats log entries as plain text.
 
 from __future__ import annotations
 
+__author__ = "Craig Parravicini"
+__collaborators__ = ["Claude (Anthropic)"]
+
 from datetime import datetime
 from typing import Any
 
