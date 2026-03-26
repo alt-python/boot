@@ -1,13 +1,13 @@
 [project]
 name = "alt-python-boot"
-version = "0.1.0"
+version = "1.0.0"
 description = "alt-python/boot monorepo — pysypt, config, logger"
 requires-python = ">=3.12"
 dependencies = [
-    "common",
-    "pysypt",
-    "config",
-    "logger",
+    "alt-python-common",
+    "alt-python-pysypt",
+    "alt-python-config",
+    "alt-python-logger",
 ]
 
 [tool.uv.workspace]
@@ -16,13 +16,15 @@ members = [
     "packages/pysypt",
     "packages/config",
     "packages/logger",
+    "packages/example-1-1-intro-config",
+    "packages/example-1-2-intro-logger",
 ]
 
 [tool.uv.sources]
-common = { workspace = true }
-pysypt = { workspace = true }
-config = { workspace = true }
-logger = { workspace = true }
+alt-python-common = { workspace = true }
+alt-python-pysypt = { workspace = true }
+alt-python-config = { workspace = true }
+alt-python-logger = { workspace = true }
 
 [dependency-groups]
 dev = [

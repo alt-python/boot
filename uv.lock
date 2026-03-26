@@ -5,21 +5,23 @@ requires-python = ">=3.12"
 [manifest]
 members = [
     "alt-python-boot",
-    "common",
-    "config",
-    "logger",
-    "pysypt",
+    "alt-python-common",
+    "alt-python-config",
+    "alt-python-logger",
+    "alt-python-pysypt",
+    "example-1-1-intro-config",
+    "example-1-2-intro-logger",
 ]
 
 [[package]]
 name = "alt-python-boot"
-version = "0.1.0"
+version = "1.0.0"
 source = { virtual = "." }
 dependencies = [
-    { name = "common" },
-    { name = "config" },
-    { name = "logger" },
-    { name = "pysypt" },
+    { name = "alt-python-common" },
+    { name = "alt-python-config" },
+    { name = "alt-python-logger" },
+    { name = "alt-python-pysypt" },
 ]
 
 [package.dev-dependencies]
@@ -30,16 +32,68 @@ dev = [
 
 [package.metadata]
 requires-dist = [
-    { name = "common", editable = "packages/common" },
-    { name = "config", editable = "packages/config" },
-    { name = "logger", editable = "packages/logger" },
-    { name = "pysypt", editable = "packages/pysypt" },
+    { name = "alt-python-common", editable = "packages/common" },
+    { name = "alt-python-config", editable = "packages/config" },
+    { name = "alt-python-logger", editable = "packages/logger" },
+    { name = "alt-python-pysypt", editable = "packages/pysypt" },
 ]
 
 [package.metadata.requires-dev]
 dev = [
     { name = "pytest", specifier = ">=8.0" },
     { name = "pytest-cov", specifier = ">=5.0" },
+]
+
+[[package]]
+name = "alt-python-common"
+version = "1.0.0"
+source = { editable = "packages/common" }
+
+[[package]]
+name = "alt-python-config"
+version = "1.0.0"
+source = { editable = "packages/config" }
+dependencies = [
+    { name = "alt-python-common" },
+    { name = "alt-python-pysypt" },
+    { name = "pyyaml" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "alt-python-common", editable = "packages/common" },
+    { name = "alt-python-pysypt", editable = "packages/pysypt" },
+    { name = "pyyaml", specifier = ">=6.0" },
+]
+
+[[package]]
+name = "alt-python-logger"
+version = "1.0.0"
+source = { editable = "packages/logger" }
+dependencies = [
+    { name = "alt-python-common" },
+    { name = "alt-python-config" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "alt-python-common", editable = "packages/common" },
+    { name = "alt-python-config", editable = "packages/config" },
+]
+
+[[package]]
+name = "alt-python-pysypt"
+version = "1.0.0"
+source = { editable = "packages/pysypt" }
+dependencies = [
+    { name = "alt-python-common" },
+    { name = "cryptography" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "alt-python-common", editable = "packages/common" },
+    { name = "cryptography", specifier = ">=42.0" },
 ]
 
 [[package]]
@@ -106,28 +160,6 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/d8/53/6f443c9a4a8358a93a6792e2acffb9d9d5cb0a5cfd8802644b7b1c9a02e4/colorama-0.4.6.tar.gz", hash = "sha256:08695f5cb7ed6e0531a20572697297273c47b8cae5a63ffc6d6ed5c201be6e44", size = 27697, upload-time = "2022-10-25T02:36:22.414Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/d1/d6/3965ed04c63042e047cb6a3e6ed1a63a35087b6a609aa3a15ed8ac56c221/colorama-0.4.6-py2.py3-none-any.whl", hash = "sha256:4f1d9991f5acc0ca119f9d443620b77f9d6b33703e51011c16baf57afb285fc6", size = 25335, upload-time = "2022-10-25T02:36:20.889Z" },
-]
-
-[[package]]
-name = "common"
-version = "0.1.0"
-source = { editable = "packages/common" }
-
-[[package]]
-name = "config"
-version = "0.1.0"
-source = { editable = "packages/config" }
-dependencies = [
-    { name = "common" },
-    { name = "pysypt" },
-    { name = "pyyaml" },
-]
-
-[package.metadata]
-requires-dist = [
-    { name = "common", editable = "packages/common" },
-    { name = "pysypt", editable = "packages/pysypt" },
-    { name = "pyyaml", specifier = ">=6.0" },
 ]
 
 [[package]]
@@ -268,27 +300,38 @@ wheels = [
 ]
 
 [[package]]
+name = "example-1-1-intro-config"
+version = "1.0.0"
+source = { virtual = "packages/example-1-1-intro-config" }
+dependencies = [
+    { name = "alt-python-config" },
+]
+
+[package.metadata]
+requires-dist = [{ name = "alt-python-config", editable = "packages/config" }]
+
+[[package]]
+name = "example-1-2-intro-logger"
+version = "1.0.0"
+source = { virtual = "packages/example-1-2-intro-logger" }
+dependencies = [
+    { name = "alt-python-config" },
+    { name = "alt-python-logger" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "alt-python-config", editable = "packages/config" },
+    { name = "alt-python-logger", editable = "packages/logger" },
+]
+
+[[package]]
 name = "iniconfig"
 version = "2.3.0"
 source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/72/34/14ca021ce8e5dfedc35312d08ba8bf51fdd999c576889fc2c24cb97f4f10/iniconfig-2.3.0.tar.gz", hash = "sha256:c76315c77db068650d49c5b56314774a7804df16fee4402c1f19d6d15d8c4730", size = 20503, upload-time = "2025-10-18T21:55:43.219Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/cb/b1/3846dd7f199d53cb17f49cba7e651e9ce294d8497c8c150530ed11865bb8/iniconfig-2.3.0-py3-none-any.whl", hash = "sha256:f631c04d2c48c52b84d0d0549c99ff3859c98df65b3101406327ecc7d53fbf12", size = 7484, upload-time = "2025-10-18T21:55:41.639Z" },
-]
-
-[[package]]
-name = "logger"
-version = "0.1.0"
-source = { editable = "packages/logger" }
-dependencies = [
-    { name = "common" },
-    { name = "config" },
-]
-
-[package.metadata]
-requires-dist = [
-    { name = "common", editable = "packages/common" },
-    { name = "config", editable = "packages/config" },
 ]
 
 [[package]]
@@ -325,21 +368,6 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/b0/77/a5b8c569bf593b0140bde72ea885a803b82086995367bf2037de0159d924/pygments-2.19.2.tar.gz", hash = "sha256:636cb2477cec7f8952536970bc533bc43743542f70392ae026374600add5b887", size = 4968631, upload-time = "2025-06-21T13:39:12.283Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/c7/21/705964c7812476f378728bdf590ca4b771ec72385c533964653c68e86bdc/pygments-2.19.2-py3-none-any.whl", hash = "sha256:86540386c03d588bb81d44bc3928634ff26449851e99741617ecb9037ee5ec0b", size = 1225217, upload-time = "2025-06-21T13:39:07.939Z" },
-]
-
-[[package]]
-name = "pysypt"
-version = "0.1.0"
-source = { editable = "packages/pysypt" }
-dependencies = [
-    { name = "common" },
-    { name = "cryptography" },
-]
-
-[package.metadata]
-requires-dist = [
-    { name = "common", editable = "packages/common" },
-    { name = "cryptography", specifier = ">=42.0" },
 ]
 
 [[package]]

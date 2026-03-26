@@ -1,0 +1,10 @@
+{
+  "app": {
+    "name": "Config Example",
+    "greeting": "Hello",
+    "max_retries": 3
+  },
+  "server": {
+    "port": 8080
+  }
+}

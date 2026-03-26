@@ -1,0 +1,4 @@
+app:
+  greeting: "G'day"
+server:
+  port: 9090

@@ -1,0 +1,12 @@
+{
+  "app": { "name": "Logger Example" },
+  "logging": {
+    "format": "text",
+    "level": {
+      "/": "info",
+      "alt_python": {
+        "example_1_2_intro_logger": "debug"
+      }
+    }
+  }
+}

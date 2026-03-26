@@ -1,11 +1,12 @@
 """
-logger.console_logger — Logger that emits via Python's stdlib logging.
+logger.console_logger — Logger that writes formatted records to stdout.
 
-Each ConsoleLogger wraps a stdlib logging.Logger so the full stdlib handler
-ecosystem (StreamHandler, FileHandler, RotatingFileHandler, etc.) is available.
+The formatter (JSONFormatter or PlainTextFormatter) produces the final string.
+Output goes to sys.stdout so all levels appear on stdout — error and fatal
+included. Callers that want stderr routing can pass a custom sink.
 
-The formatter argument controls the output format of each log record's message
-string; the stdlib handler controls destination and encoding.
+The optional stdlib_logger parameter accepts a CachingConsole (or any object
+with isEnabledFor(int) and log(int, str)) for use in tests.
 """
 
 from __future__ import annotations
@@ -13,18 +14,18 @@ from __future__ import annotations
 __author__ = "Craig Parravicini"
 __collaborators__ = ["Claude (Anthropic)"]
 
-import logging
+import sys
 from datetime import datetime, timezone
 from typing import Any
 
 from logger.logger import Logger
-from logger.logger_level import LoggerLevel, VERBOSE_INT
+from logger.logger_level import LoggerLevel
 from logger.json_formatter import JSONFormatter
 
 
 class ConsoleLogger(Logger):
     """
-    Logger implementation that emits via a stdlib logging.Logger.
+    Logger implementation that emits formatted records to stdout.
 
     Mirrors the JS ConsoleLogger class.
     """
@@ -34,23 +35,28 @@ class ConsoleLogger(Logger):
         category: str | None = None,
         level: str | None = None,
         formatter: Any = None,
-        stdlib_logger: logging.Logger | None = None,
+        stdlib_logger: Any = None,
     ) -> None:
         super().__init__(category, level)
         self.formatter = formatter or JSONFormatter()
-        self._stdlib = stdlib_logger or logging.getLogger(self.category)
+        # stdlib_logger is kept for test injection (CachingConsole).
+        # When None we write directly to sys.stdout — no stdlib handler chain.
+        self._sink = stdlib_logger  # None means use sys.stdout
 
     # ------------------------------------------------------------------
-    # Emit methods
+    # Emit
     # ------------------------------------------------------------------
 
     def _emit(self, level_name: str, message: str, meta: Any = None) -> None:
-        stdlib_level = LoggerLevel.STDLIB[level_name]
-        if self._stdlib.isEnabledFor(stdlib_level):
-            formatted = self.formatter.format(
-                datetime.now(timezone.utc), self.category, level_name, message, meta
-            )
-            self._stdlib.log(stdlib_level, formatted)
+        formatted = self.formatter.format(
+            datetime.now(timezone.utc), self.category, level_name, message, meta
+        )
+        if self._sink is not None:
+            stdlib_level = LoggerLevel.STDLIB[level_name]
+            if self._sink.isEnabledFor(stdlib_level):
+                self._sink.log(stdlib_level, formatted)
+        else:
+            print(formatted, file=sys.stdout)
 
     def log(self, level: str, message: str, meta: Any = None) -> None:
         if self.is_level_enabled(level):
