@@ -1,7 +1,8 @@
 [project]
 name = "alt-python-common"
-version = "1.0.0"
+version = "1.0.1"
 description = "Shared utilities for alt-python packages"
+readme = "README.md"
 requires-python = ">=3.12"
 dependencies = []
 

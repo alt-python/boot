@@ -1,6 +1,6 @@
 [project]
 name = "alt-python-boot"
-version = "1.0.0"
+version = "1.0.1"
 description = "alt-python/boot monorepo — pysypt, config, logger"
 requires-python = ">=3.12"
 dependencies = [

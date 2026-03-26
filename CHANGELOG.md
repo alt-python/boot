@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.1] — 2026-03-26
+
+### Added
+
+- **PyPI long description.** Added `readme = "README.md"` to all four publishable
+  packages (`alt-python-common`, `alt-python-pysypt`, `alt-python-config`,
+  `alt-python-logger`) so the README is rendered as the project page on PyPI.
+  Added `README.md` to `alt-python-common` (previously missing).
+
 ## [1.0.0] — 2026-03-26
 
 > Initial public release.
@@ -72,5 +81,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **`uv` workspace** — monorepo managed with `uv`. All packages are workspace members;
   inter-package dependencies declared via `tool.uv.sources`.
 
-[Unreleased]: https://github.com/alt-python/boot/compare/v1.0.0...HEAD
+[Unreleased]: https://github.com/alt-python/boot/compare/v1.0.1...HEAD
+[1.0.1]: https://github.com/alt-python/boot/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/alt-python/boot/releases/tag/v1.0.0

@@ -15,7 +15,7 @@ members = [
 
 [[package]]
 name = "alt-python-boot"
-version = "1.0.0"
+version = "1.0.1"
 source = { virtual = "." }
 dependencies = [
     { name = "alt-python-common" },
@@ -46,12 +46,12 @@ dev = [
 
 [[package]]
 name = "alt-python-common"
-version = "1.0.0"
+version = "1.0.1"
 source = { editable = "packages/common" }
 
 [[package]]
 name = "alt-python-config"
-version = "1.0.0"
+version = "1.0.1"
 source = { editable = "packages/config" }
 dependencies = [
     { name = "alt-python-common" },
@@ -68,7 +68,7 @@ requires-dist = [
 
 [[package]]
 name = "alt-python-logger"
-version = "1.0.0"
+version = "1.0.1"
 source = { editable = "packages/logger" }
 dependencies = [
     { name = "alt-python-common" },
@@ -83,7 +83,7 @@ requires-dist = [
 
 [[package]]
 name = "alt-python-pysypt"
-version = "1.0.0"
+version = "1.0.1"
 source = { editable = "packages/pysypt" }
 dependencies = [
     { name = "alt-python-common" },
