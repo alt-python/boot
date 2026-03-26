@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.0.0] — 2026-03-26
 
+> Initial public release.
+
 ### Added
 
 - **`pysypt`** — Jasypt-compatible PBE encryption/decryption for Python.
