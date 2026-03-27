@@ -1,0 +1,1 @@
+{"app": {"name": "Boot Example", "greeting": "Hello"}, "boot": {"banner-mode": "console"}, "logging": {"format": "text", "level": {"ROOT": "info"}}}

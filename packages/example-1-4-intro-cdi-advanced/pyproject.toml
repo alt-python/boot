@@ -1,0 +1,15 @@
+[project]
+name = "example-1-4-intro-cdi-advanced"
+version = "1.0.0"
+description = "Step 1.4 — alt-python/cdi advanced: profiles, prototype, depends_on, primary"
+requires-python = ">=3.12"
+dependencies = [
+    "alt-python-cdi",
+    "alt-python-config",
+    "alt-python-logger",
+]
+
+[tool.uv.sources]
+alt-python-cdi = { workspace = true }
+alt-python-config = { workspace = true }
+alt-python-logger = { workspace = true }

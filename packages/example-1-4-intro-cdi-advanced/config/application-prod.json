@@ -1,0 +1,1 @@
+{"app": {"maxConnections": 50}, "db": {"host": "prod-db.internal", "port": 5432}}

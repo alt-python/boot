@@ -1,0 +1,6 @@
+pyproject.toml
+example_1_4_intro_cdi_advanced.egg-info/PKG-INFO
+example_1_4_intro_cdi_advanced.egg-info/SOURCES.txt
+example_1_4_intro_cdi_advanced.egg-info/dependency_links.txt
+example_1_4_intro_cdi_advanced.egg-info/requires.txt
+example_1_4_intro_cdi_advanced.egg-info/top_level.txt

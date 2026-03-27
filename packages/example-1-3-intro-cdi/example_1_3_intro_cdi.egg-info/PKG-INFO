@@ -1,0 +1,8 @@
+Metadata-Version: 2.4
+Name: example-1-3-intro-cdi
+Version: 1.0.0
+Summary: Step 1.3 — alt-python/cdi basic dependency injection
+Requires-Python: >=3.12
+Requires-Dist: alt-python-cdi
+Requires-Dist: alt-python-config
+Requires-Dist: alt-python-logger

@@ -1,0 +1,6 @@
+pyproject.toml
+example_1_3_intro_cdi.egg-info/PKG-INFO
+example_1_3_intro_cdi.egg-info/SOURCES.txt
+example_1_3_intro_cdi.egg-info/dependency_links.txt
+example_1_3_intro_cdi.egg-info/requires.txt
+example_1_3_intro_cdi.egg-info/top_level.txt

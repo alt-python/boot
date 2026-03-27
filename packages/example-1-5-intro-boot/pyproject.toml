@@ -1,0 +1,13 @@
+[project]
+name = "example-1-5-intro-boot"
+version = "1.0.0"
+description = "Step 1.5 — alt-python/boot one-call bootstrap"
+requires-python = ">=3.12"
+dependencies = [
+    "alt-python-cdi",
+    "alt-python-boot-lib",
+]
+
+[tool.uv.sources]
+alt-python-cdi = { workspace = true }
+alt-python-boot-lib = { workspace = true }

@@ -1,0 +1,5 @@
+{
+  "app": {"name": "CDI Advanced Example", "maxConnections": 5},
+  "logging": {"format": "text", "level": {"ROOT": "info"}},
+  "db": {"host": "localhost", "port": 5432}
+}

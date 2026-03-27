@@ -1,0 +1,1 @@
+{"app": {"maxConnections": 10}, "db": {"host": "dev-db.local", "port": 5433}}

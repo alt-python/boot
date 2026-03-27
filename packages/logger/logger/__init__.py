@@ -40,6 +40,7 @@ from logger.json_formatter import JSONFormatter
 from logger.plain_text_formatter import PlainTextFormatter
 from logger.caching_console import CachingConsole
 from logger.multi_logger import MultiLogger
+from logger.caching_logger_factory import CachingLoggerFactory
 
 # Module-level singleton — zero setup required.
 logger_factory = LoggerFactory()
@@ -56,5 +57,6 @@ __all__ = [
     "PlainTextFormatter",
     "CachingConsole",
     "MultiLogger",
+    "CachingLoggerFactory",
     "logger_factory",
 ]

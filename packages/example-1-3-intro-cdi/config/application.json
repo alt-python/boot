@@ -1,0 +1,4 @@
+{
+  "app": { "name": "CDI Example", "greeting": "Hello" },
+  "logging": { "format": "text", "level": { "ROOT": "info" } }
+}
