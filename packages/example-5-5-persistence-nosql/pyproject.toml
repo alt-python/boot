@@ -1,0 +1,15 @@
+[project]
+name = "example-5-5-persistence-nosql"
+version = "1.0.0"
+description = "Step 5.5 — alt-python/boot-pynosqlc: auto-configured NoSQL client from config"
+requires-python = ">=3.12"
+dependencies = [
+    "alt-python-boot-lib",
+    "alt-python-boot-pynosqlc",
+    "alt-python-pynosqlc-memory>=1.0.4",
+]
+
+[tool.uv.sources]
+alt-python-boot-lib = { workspace = true }
+alt-python-boot-pynosqlc = { workspace = true }
+alt-python-pynosqlc-memory = { path = "/Users/craig/src/github/alt-python/pynosqlc/packages/memory", editable = true }

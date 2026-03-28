@@ -1,0 +1,3 @@
+alt-python-boot-lib
+alt-python-boot-pydbc
+alt-python-pydbc-sqlite>=1.0.0

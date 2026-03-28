@@ -1,0 +1,14 @@
+[project]
+name = "example-5-2-persistence-pydbc"
+version = "1.0.0"
+description = "Step 5.2 — alt-python/boot-pydbc: auto-configured DataSource and PydbcTemplate from config"
+requires-python = ">=3.12"
+dependencies = [
+    "alt-python-boot-lib",
+    "alt-python-boot-pydbc",
+    "alt-python-pydbc-sqlite>=1.0.0",
+]
+
+[tool.uv.sources]
+alt-python-boot-lib = { workspace = true }
+alt-python-boot-pydbc = { workspace = true }

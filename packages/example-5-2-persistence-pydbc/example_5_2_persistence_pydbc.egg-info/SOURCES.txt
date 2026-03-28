@@ -1,0 +1,6 @@
+pyproject.toml
+example_5_2_persistence_pydbc.egg-info/PKG-INFO
+example_5_2_persistence_pydbc.egg-info/SOURCES.txt
+example_5_2_persistence_pydbc.egg-info/dependency_links.txt
+example_5_2_persistence_pydbc.egg-info/requires.txt
+example_5_2_persistence_pydbc.egg-info/top_level.txt

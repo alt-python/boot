@@ -1,0 +1,3 @@
+alt-python-boot-lib
+alt-python-boot-pynosqlc
+alt-python-pynosqlc-memory>=1.0.4

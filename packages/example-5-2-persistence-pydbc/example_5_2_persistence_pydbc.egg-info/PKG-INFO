@@ -1,0 +1,8 @@
+Metadata-Version: 2.4
+Name: example-5-2-persistence-pydbc
+Version: 1.0.0
+Summary: Step 5.2 — alt-python/boot-pydbc: auto-configured DataSource and PydbcTemplate from config
+Requires-Python: >=3.12
+Requires-Dist: alt-python-boot-lib
+Requires-Dist: alt-python-boot-pydbc
+Requires-Dist: alt-python-pydbc-sqlite>=1.0.0

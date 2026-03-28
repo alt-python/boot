@@ -1,0 +1,28 @@
+[project]
+name = "alt-python-boot-pynosqlc"
+version = "1.0.0"
+description = "Spring Boot-style CDI auto-configuration for pynosqlc (NoSQL document store)"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "alt-python-cdi",
+    "alt-python-boot-lib",
+    "alt-python-pynosqlc-core>=1.0.4",
+    "alt-python-pynosqlc-memory>=1.0.4",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["boot_pynosqlc"]
+
+[tool.uv.sources]
+alt-python-cdi = { workspace = true }
+alt-python-boot-lib = { workspace = true }
+alt-python-pynosqlc-core = { path = "/Users/craig/src/github/alt-python/pynosqlc/packages/core", editable = true }
+alt-python-pynosqlc-memory = { path = "/Users/craig/src/github/alt-python/pynosqlc/packages/memory", editable = true }
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

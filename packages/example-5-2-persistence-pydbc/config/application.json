@@ -1,0 +1,11 @@
+{
+  "app": {"name": "Persistence Example", "version": "1.0.0"},
+  "boot": {
+    "banner-mode": "console",
+    "datasource": {
+      "url": "pydbc:sqlite::memory:",
+      "pool": {"enabled": true, "max": 1}
+    }
+  },
+  "logging": {"format": "text", "level": {"ROOT": "info"}}
+}

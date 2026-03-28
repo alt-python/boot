@@ -10,6 +10,8 @@ dependencies = [
     "alt-python-logger",
     "alt-python-cdi",
     "alt-python-boot-lib",
+    "alt-python-boot-pydbc",
+    "alt-python-boot-pynosqlc",
     "alt-python-boot-aws-lambda",
     "alt-python-boot-azure-function",
     "alt-python-boot-gcp-cloudfunction",
@@ -19,6 +21,8 @@ dependencies = [
     "example-3-1-serverless-lambda",
     "example-3-2-serverless-azure-function",
     "example-3-3-serverless-gcp-cloudfunction",
+    "example-5-2-persistence-pydbc",
+    "example-5-5-persistence-nosql",
 ]
 
 [tool.uv.workspace]
@@ -34,12 +38,16 @@ members = [
     "packages/example-1-4-intro-cdi-advanced",
     "packages/example-1-5-intro-boot",
     "packages/boot",
+    "packages/boot-pydbc",
+    "packages/boot-pynosqlc",
     "packages/boot-aws-lambda",
     "packages/boot-azure-function",
     "packages/boot-gcp-cloudfunction",
     "packages/example-3-1-serverless-lambda",
     "packages/example-3-2-serverless-azure-function",
     "packages/example-3-3-serverless-gcp-cloudfunction",
+    "packages/example-5-2-persistence-pydbc",
+    "packages/example-5-5-persistence-nosql",
 ]
 
 [tool.uv.sources]
@@ -49,6 +57,10 @@ alt-python-config = { workspace = true }
 alt-python-logger = { workspace = true }
 alt-python-cdi = { workspace = true }
 alt-python-boot-lib = { workspace = true }
+alt-python-boot-pydbc = { workspace = true }
+alt-python-boot-pynosqlc = { workspace = true }
+alt-python-pynosqlc-core = { path = "/Users/craig/src/github/alt-python/pynosqlc/packages/core", editable = true }
+alt-python-pynosqlc-memory = { path = "/Users/craig/src/github/alt-python/pynosqlc/packages/memory", editable = true }
 alt-python-boot-aws-lambda = { workspace = true }
 alt-python-boot-azure-function = { workspace = true }
 alt-python-boot-gcp-cloudfunction = { workspace = true }
@@ -58,6 +70,8 @@ example-1-5-intro-boot = { workspace = true }
 example-3-1-serverless-lambda = { workspace = true }
 example-3-2-serverless-azure-function = { workspace = true }
 example-3-3-serverless-gcp-cloudfunction = { workspace = true }
+example-5-2-persistence-pydbc = { workspace = true }
+example-5-5-persistence-nosql = { workspace = true }
 
 [dependency-groups]
 dev = [

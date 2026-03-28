@@ -13,6 +13,8 @@ members = [
     "alt-python-boot-azure-function",
     "alt-python-boot-gcp-cloudfunction",
     "alt-python-boot-lib",
+    "alt-python-boot-pydbc",
+    "alt-python-boot-pynosqlc",
     "alt-python-cdi",
     "alt-python-common",
     "alt-python-config",
@@ -26,6 +28,8 @@ members = [
     "example-3-1-serverless-lambda",
     "example-3-2-serverless-azure-function",
     "example-3-3-serverless-gcp-cloudfunction",
+    "example-5-2-persistence-pydbc",
+    "example-5-5-persistence-nosql",
 ]
 
 [[package]]
@@ -37,6 +41,8 @@ dependencies = [
     { name = "alt-python-boot-azure-function" },
     { name = "alt-python-boot-gcp-cloudfunction" },
     { name = "alt-python-boot-lib" },
+    { name = "alt-python-boot-pydbc" },
+    { name = "alt-python-boot-pynosqlc" },
     { name = "alt-python-cdi" },
     { name = "alt-python-common" },
     { name = "alt-python-config" },
@@ -48,6 +54,8 @@ dependencies = [
     { name = "example-3-1-serverless-lambda" },
     { name = "example-3-2-serverless-azure-function" },
     { name = "example-3-3-serverless-gcp-cloudfunction" },
+    { name = "example-5-2-persistence-pydbc" },
+    { name = "example-5-5-persistence-nosql" },
 ]
 
 [package.dev-dependencies]
@@ -64,6 +72,8 @@ requires-dist = [
     { name = "alt-python-boot-azure-function", editable = "packages/boot-azure-function" },
     { name = "alt-python-boot-gcp-cloudfunction", editable = "packages/boot-gcp-cloudfunction" },
     { name = "alt-python-boot-lib", editable = "packages/boot" },
+    { name = "alt-python-boot-pydbc", editable = "packages/boot-pydbc" },
+    { name = "alt-python-boot-pynosqlc", editable = "packages/boot-pynosqlc" },
     { name = "alt-python-cdi", editable = "packages/cdi" },
     { name = "alt-python-common", editable = "packages/common" },
     { name = "alt-python-config", editable = "packages/config" },
@@ -75,6 +85,8 @@ requires-dist = [
     { name = "example-3-1-serverless-lambda", editable = "packages/example-3-1-serverless-lambda" },
     { name = "example-3-2-serverless-azure-function", editable = "packages/example-3-2-serverless-azure-function" },
     { name = "example-3-3-serverless-gcp-cloudfunction", editable = "packages/example-3-3-serverless-gcp-cloudfunction" },
+    { name = "example-5-2-persistence-pydbc", editable = "packages/example-5-2-persistence-pydbc" },
+    { name = "example-5-5-persistence-nosql", editable = "packages/example-5-5-persistence-nosql" },
 ]
 
 [package.metadata.requires-dev]
@@ -145,6 +157,44 @@ requires-dist = [
 ]
 
 [[package]]
+name = "alt-python-boot-pydbc"
+version = "1.0.0"
+source = { editable = "packages/boot-pydbc" }
+dependencies = [
+    { name = "alt-python-boot-lib" },
+    { name = "alt-python-cdi" },
+    { name = "alt-python-pydbc-core" },
+    { name = "alt-python-pydbc-sqlite" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "alt-python-boot-lib", editable = "packages/boot" },
+    { name = "alt-python-cdi", editable = "packages/cdi" },
+    { name = "alt-python-pydbc-core", specifier = ">=1.0.0" },
+    { name = "alt-python-pydbc-sqlite", specifier = ">=1.0.0" },
+]
+
+[[package]]
+name = "alt-python-boot-pynosqlc"
+version = "1.0.0"
+source = { editable = "packages/boot-pynosqlc" }
+dependencies = [
+    { name = "alt-python-boot-lib" },
+    { name = "alt-python-cdi" },
+    { name = "alt-python-pynosqlc-core" },
+    { name = "alt-python-pynosqlc-memory" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "alt-python-boot-lib", editable = "packages/boot" },
+    { name = "alt-python-cdi", editable = "packages/cdi" },
+    { name = "alt-python-pynosqlc-core", editable = "/Users/craig/src/github/alt-python/pynosqlc/packages/core" },
+    { name = "alt-python-pynosqlc-memory", editable = "/Users/craig/src/github/alt-python/pynosqlc/packages/memory" },
+]
+
+[[package]]
 name = "alt-python-cdi"
 version = "1.0.0"
 source = { editable = "packages/cdi" }
@@ -195,6 +245,43 @@ requires-dist = [
     { name = "alt-python-common", editable = "packages/common" },
     { name = "alt-python-config", editable = "packages/config" },
 ]
+
+[[package]]
+name = "alt-python-pydbc-core"
+version = "1.0.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/42/1f/8ab7c7e8ab3d5ee4bb30d1f6bd850e1cd4f7e351bf2c3a7a0c08078b1f5e/alt_python_pydbc_core-1.0.0.tar.gz", hash = "sha256:00bb2bd9f8f5c2dd02b57bfdcdb24a779e10041e516a836a8527ebbf6da45913", size = 22585, upload-time = "2026-03-28T04:37:06.214Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/6c/84/d2314ac3aad60c69d9135609b9253ce0ff4e68cdbb911c60ef203a47145a/alt_python_pydbc_core-1.0.0-py3-none-any.whl", hash = "sha256:5fc850ae133edb43896ba0be6f319d4f98f19216231a0943c6a215300a54f3eb", size = 21553, upload-time = "2026-03-28T04:36:57.517Z" },
+]
+
+[[package]]
+name = "alt-python-pydbc-sqlite"
+version = "1.0.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "alt-python-pydbc-core" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/3d/7d/f32237a6a37eed633b5da3013ebc633f0bfce74d17a0bbaedb92194ff22c/alt_python_pydbc_sqlite-1.0.0.tar.gz", hash = "sha256:7fde16d754e870efc5878bd701c25dd7ae0aacc4e07bae8745be55413d113696", size = 3732, upload-time = "2026-03-28T04:36:56.455Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/d7/46/e81f5f19ed436ed4791106ba1d572e1b39d1ddad95fbdf045e53f9a98731/alt_python_pydbc_sqlite-1.0.0-py3-none-any.whl", hash = "sha256:1fa46d0f8e58fc14071993cb82a0a3aebbc378ca083c409432350e37a71c101b", size = 3620, upload-time = "2026-03-28T04:37:03.865Z" },
+]
+
+[[package]]
+name = "alt-python-pynosqlc-core"
+version = "1.0.4"
+source = { editable = "../../../../../src/github/alt-python/pynosqlc/packages/core" }
+
+[[package]]
+name = "alt-python-pynosqlc-memory"
+version = "1.0.4"
+source = { editable = "/Users/craig/src/github/alt-python/pynosqlc/packages/memory" }
+dependencies = [
+    { name = "alt-python-pynosqlc-core" },
+]
+
+[package.metadata]
+requires-dist = [{ name = "alt-python-pynosqlc-core", editable = "../../../../../src/github/alt-python/pynosqlc/packages/core" }]
 
 [[package]]
 name = "alt-python-pysypt"
@@ -625,6 +712,40 @@ requires-dist = [
     { name = "alt-python-boot-gcp-cloudfunction", editable = "packages/boot-gcp-cloudfunction" },
     { name = "alt-python-boot-lib", editable = "packages/boot" },
     { name = "flask", specifier = ">=3.0" },
+]
+
+[[package]]
+name = "example-5-2-persistence-pydbc"
+version = "1.0.0"
+source = { editable = "packages/example-5-2-persistence-pydbc" }
+dependencies = [
+    { name = "alt-python-boot-lib" },
+    { name = "alt-python-boot-pydbc" },
+    { name = "alt-python-pydbc-sqlite" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "alt-python-boot-lib", editable = "packages/boot" },
+    { name = "alt-python-boot-pydbc", editable = "packages/boot-pydbc" },
+    { name = "alt-python-pydbc-sqlite", specifier = ">=1.0.0" },
+]
+
+[[package]]
+name = "example-5-5-persistence-nosql"
+version = "1.0.0"
+source = { editable = "packages/example-5-5-persistence-nosql" }
+dependencies = [
+    { name = "alt-python-boot-lib" },
+    { name = "alt-python-boot-pynosqlc" },
+    { name = "alt-python-pynosqlc-memory" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "alt-python-boot-lib", editable = "packages/boot" },
+    { name = "alt-python-boot-pynosqlc", editable = "packages/boot-pynosqlc" },
+    { name = "alt-python-pynosqlc-memory", editable = "/Users/craig/src/github/alt-python/pynosqlc/packages/memory" },
 ]
 
 [[package]]

@@ -1,0 +1,6 @@
+pyproject.toml
+example_5_5_persistence_nosql.egg-info/PKG-INFO
+example_5_5_persistence_nosql.egg-info/SOURCES.txt
+example_5_5_persistence_nosql.egg-info/dependency_links.txt
+example_5_5_persistence_nosql.egg-info/requires.txt
+example_5_5_persistence_nosql.egg-info/top_level.txt
