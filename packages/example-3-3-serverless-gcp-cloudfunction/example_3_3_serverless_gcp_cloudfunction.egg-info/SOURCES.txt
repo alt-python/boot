@@ -1,0 +1,7 @@
+README.md
+pyproject.toml
+example_3_3_serverless_gcp_cloudfunction.egg-info/PKG-INFO
+example_3_3_serverless_gcp_cloudfunction.egg-info/SOURCES.txt
+example_3_3_serverless_gcp_cloudfunction.egg-info/dependency_links.txt
+example_3_3_serverless_gcp_cloudfunction.egg-info/requires.txt
+example_3_3_serverless_gcp_cloudfunction.egg-info/top_level.txt

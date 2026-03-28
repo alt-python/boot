@@ -1,0 +1,5 @@
+{
+  "app": {"name": "Azure Function Example", "greeting": "Hello"},
+  "boot": {"banner-mode": "off"},
+  "logging": {"format": "text", "level": {"ROOT": "info"}}
+}

@@ -1,0 +1,8 @@
+Metadata-Version: 2.4
+Name: example-3-3-serverless-gcp-cloudfunction
+Version: 1.0.0
+Summary: Step 3.3 — alt-python/boot GCP Cloud Functions serverless adapter
+Requires-Python: >=3.12
+Requires-Dist: alt-python-boot-lib
+Requires-Dist: alt-python-boot-gcp-cloudfunction
+Requires-Dist: flask>=3.0

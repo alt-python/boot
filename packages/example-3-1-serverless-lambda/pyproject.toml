@@ -1,0 +1,13 @@
+[project]
+name = "example-3-1-serverless-lambda"
+version = "1.0.0"
+description = "Step 3.1 — alt-python/boot AWS Lambda serverless adapter"
+requires-python = ">=3.12"
+dependencies = [
+    "alt-python-boot-lib",
+    "alt-python-boot-aws-lambda",
+]
+
+[tool.uv.sources]
+alt-python-boot-lib = { workspace = true }
+alt-python-boot-aws-lambda = { workspace = true }

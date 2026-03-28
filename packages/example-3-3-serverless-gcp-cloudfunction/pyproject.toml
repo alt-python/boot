@@ -1,0 +1,14 @@
+[project]
+name = "example-3-3-serverless-gcp-cloudfunction"
+version = "1.0.0"
+description = "Step 3.3 — alt-python/boot GCP Cloud Functions serverless adapter"
+requires-python = ">=3.12"
+dependencies = [
+    "alt-python-boot-lib",
+    "alt-python-boot-gcp-cloudfunction",
+    "flask>=3.0",
+]
+
+[tool.uv.sources]
+alt-python-boot-lib = { workspace = true }
+alt-python-boot-gcp-cloudfunction = { workspace = true }
