@@ -270,7 +270,7 @@ wheels = [
 [[package]]
 name = "alt-python-pynosqlc-core"
 version = "1.0.4"
-source = { editable = "../../../../../src/github/alt-python/pynosqlc/packages/core" }
+source = { editable = "../pynosqlc/packages/core" }
 
 [[package]]
 name = "alt-python-pynosqlc-memory"
@@ -281,7 +281,7 @@ dependencies = [
 ]
 
 [package.metadata]
-requires-dist = [{ name = "alt-python-pynosqlc-core", editable = "../../../../../src/github/alt-python/pynosqlc/packages/core" }]
+requires-dist = [{ name = "alt-python-pynosqlc-core", editable = "../pynosqlc/packages/core" }]
 
 [[package]]
 name = "alt-python-pysypt"

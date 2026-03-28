@@ -7,6 +7,70 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.0] — 2026-03-28
+
+### Added
+
+- **`boot-pydbc`** — Spring Boot-style CDI auto-configuration for relational
+  databases via pydbc.
+  - `PydbcTemplate` — execute DDL, DML, and SELECT statements with positional
+    `?` parameters. Methods: `execute()`, `update()`, `query_for_list()`,
+    `query_for_object()`. Accepts an optional `row_mapper` callable.
+  - `NamedParameterPydbcTemplate` — wraps `PydbcTemplate` with `:param_name`
+    named-parameter support via `ParamstyleNormalizer`.
+  - `ConfiguredDataSource` — CDI bean that reads `boot.datasource.*` config
+    properties and creates a `DataSource`, `SingleConnectionDataSource`, or
+    `PooledDataSource` as appropriate. Silently no-ops when URL is absent.
+  - `SchemaInitializer` — CDI bean that runs `config/schema.sql` followed by
+    `config/data.sql` at startup. Skips when `boot.datasource.initialize: false`
+    or when the SQL files are absent.
+  - `DataSourceBuilder` — fluent builder for secondary datasources with custom
+    config prefix and custom CDI bean names.
+  - `pydbc_auto_configuration(prefix)` — returns 4 CDI `Singleton` beans
+    (`data_source`, `pydbc_template`, `named_parameter_pydbc_template`,
+    `schema_initializer`) ready for use in a `Context()`.
+  - `pydbc_template_starter()` — one-call `Boot.boot()` entry point.
+
+- **`boot-pynosqlc`** — Spring Boot-style CDI auto-configuration for document
+  stores via pynosqlc.
+  - `ConfiguredClientDataSource` — CDI bean that reads `boot.nosql.*` config
+    properties and creates a `ClientDataSource`. Silently no-ops when URL is
+    absent.
+  - `ManagedNosqlClient` — CDI bean that wraps a pynosqlc async client with a
+    synchronous CDI lifecycle (`init()` / `destroy()` bridge via `asyncio.run()`).
+    Provides `get_collection(name)` for synchronous collection access.
+  - `NoSqlClientBuilder` — fluent builder for secondary NoSQL clients with
+    custom config prefix and custom CDI bean names.
+  - `pynosqlc_auto_configuration(prefix)` — returns 2 CDI `Singleton` beans
+    (`nosql_client_data_source`, `nosql_client`) ready for use in a `Context()`.
+  - `pynosqlc_boot()` — one-call `Boot.boot()` entry point.
+
+- **`example-5-2-persistence-pydbc`** — runnable persistence example using
+  `PydbcTemplate` and `SchemaInitializer` over SQLite in-memory. Demonstrates
+  `find_all()`, `find_by_id()`, and `mark_done()` via a `NoteRepository` CDI
+  service. `SchemaInitializer` seeds the database from `config/schema.sql` and
+  `config/data.sql` before the application runs.
+
+- **`example-5-5-persistence-nosql`** — runnable document-store example using
+  `ManagedNosqlClient` and the pynosqlc memory driver. Demonstrates `store()`,
+  `find_all()`, and document retrieval via a `NoteRepository` CDI service with
+  an `asyncio.run()` bridge inside the synchronous `Application.run()` method.
+
+### Fixed
+
+- **`boot-pydbc` — `SchemaInitializer` pool connection leak.** `init()` now
+  calls `conn.close()` after executing schema and data files, returning the
+  connection to the pool. Without this fix, a `PooledDataSource(max=1)` was
+  exhausted before application code could acquire a connection.
+
+### Documentation
+
+- **ADR-010** — PydbcTemplate bundled inside boot-pydbc (not a separate package).
+- **ADR-011** — CDI beans access the config bean via `ctx.get('config')`, not
+  `ctx.config` (which does not exist as a public property).
+- **ADR-012** — CDI lifecycle methods (`init()`, `destroy()`) must be declared
+  as regular `def`; use `asyncio.run()` to bridge async backends.
+
 ## [1.0.1] — 2026-03-26
 
 ### Added
@@ -81,6 +145,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **`uv` workspace** — monorepo managed with `uv`. All packages are workspace members;
   inter-package dependencies declared via `tool.uv.sources`.
 
-[Unreleased]: https://github.com/alt-python/boot/compare/v1.0.1...HEAD
+[Unreleased]: https://github.com/alt-python/boot/compare/v1.1.0...HEAD
+[1.1.0]: https://github.com/alt-python/boot/compare/v1.0.1...v1.1.0
 [1.0.1]: https://github.com/alt-python/boot/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/alt-python/boot/releases/tag/v1.0.0
