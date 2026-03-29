@@ -1,6 +1,6 @@
 [project]
 name = "example-5-3-persistence-flyway"
-version = "1.0.0"
+version = "1.1.0"
 description = "Step 5.3 — Flyway-managed SQL migrations with alt-python/boot"
 requires-python = ">=3.12"
 dependencies = [

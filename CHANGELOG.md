@@ -11,11 +11,47 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- **`flyway`** — Flyway-inspired versioned SQL migration engine for Python.
+  Port of `@alt-javascript/flyway`.
+  - `Flyway` — full OSS feature set: `migrate()`, `info()`, `validate()`,
+    `baseline()`, `repair()`, `clean()`. Configurable locations, history table
+    name, `outOfOrder`, `validateOnMigrate`, `installedBy`, `baselineVersion`.
+  - `SchemaHistoryTable` — creates and manages `flyway_schema_history` (or
+    custom-named) table via `PydbcTemplate`. Methods: `provision()`,
+    `findAll()`, `maxRank()`, `insert()`, `updateSuccess()`,
+    `removeFailedEntries()`, `drop()`, `insertBaseline()`.
+  - `MigrationLoader` — discovers `V{version}__{description}.sql` files from
+    one or more filesystem locations, sorts them by version ascending, attaches
+    CRC32-style checksums for drift detection.
+  - `MigrationExecutor` — executes a multi-statement SQL file against a pydbc
+    `Connection`; strips line comments, splits on `;`.
+  - `MigrationVersion` — segment-aware version comparison (`1 < 1.1 < 2 < 10`).
+  - `checksum()` — signed 32-bit CRC32 matching Flyway OSS checksum format.
+  - `FlywayError`, `FlywayValidationError`, `FlywayMigrationError` — typed
+    error hierarchy.
+
+- **`boot-flyway`** — Spring Boot-style CDI auto-configuration for Flyway
+  migrations. Port of `@alt-javascript/boot-flyway`.
+  - `ManagedFlyway` — CDI bean that reads `boot.flyway.*` config and calls
+    `flyway.migrate()` synchronously during `init()`. Unlike the JS port (where
+    CDI does not await async `init()`), the Python CDI runtime is synchronous —
+    `migrate()` completes before any downstream bean starts.
+  - `flyway_auto_configuration(prefix, datasource_bean)` — returns a `Singleton`
+    list ready for `Context()`. Wires `ManagedFlyway` to the named datasource
+    bean (default: `data_source`).
+  - `flyway_starter()` — alias for `flyway_auto_configuration()`.
+  - Config keys under `boot.flyway.*`: `enabled`, `locations`,
+    `table`, `baseline-on-migrate`, `baseline-version`,
+    `baseline-description`, `out-of-order`, `validate-on-migrate`,
+    `installed-by`.
+
 - **`boot-pydbc`** — Spring Boot-style CDI auto-configuration for relational
   databases via pydbc.
   - `PydbcTemplate` — execute DDL, DML, and SELECT statements with positional
     `?` parameters. Methods: `execute()`, `update()`, `query_for_list()`,
-    `query_for_object()`. Accepts an optional `row_mapper` callable.
+    `query_for_object()`, `query_for_map()` (single-row dict), `batch_update()`
+    (bulk DML), `execute_in_transaction()` (callback-scoped transaction with
+    automatic rollback on exception). Accepts an optional `row_mapper` callable.
   - `NamedParameterPydbcTemplate` — wraps `PydbcTemplate` with `:param_name`
     named-parameter support via `ParamstyleNormalizer`.
   - `ConfiguredDataSource` — CDI bean that reads `boot.datasource.*` config
@@ -46,10 +82,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - `pynosqlc_boot()` — one-call `Boot.boot()` entry point.
 
 - **`example-5-2-persistence-pydbc`** — runnable persistence example using
-  `PydbcTemplate` and `SchemaInitializer` over SQLite in-memory. Demonstrates
-  `find_all()`, `find_by_id()`, and `mark_done()` via a `NoteRepository` CDI
-  service. `SchemaInitializer` seeds the database from `config/schema.sql` and
-  `config/data.sql` before the application runs.
+  `PydbcTemplate` and Flyway migrations over SQLite in-memory. Demonstrates
+  `find_all()`, `find_by_id()`, `save()`, `mark_done()`, and `remove()` via a
+  `NoteRepository` CDI service. Flyway runs `db/migration/` DDL and seed
+  migrations at startup via `boot-flyway`.
+
+- **`example-5-3-persistence-flyway`** — runnable single-datasource Flyway
+  example. Demonstrates `ManagedFlyway` running three versioned migrations
+  (`V1__create_notes_table.sql`, `V2__add_priority_column.sql`,
+  `V3__seed_notes.sql`) against an in-memory SQLite datasource, then querying
+  and mutating notes via a `NoteRepository`.
+
+- **`example-5-4-persistence-flyway-multidb`** — runnable multi-datasource
+  Flyway example. Demonstrates two independent `DataSourceBuilder` datasources
+  (`notes` and `tags`) each with their own `flyway_auto_configuration()` and
+  migration locations, wired into a single CDI context.
 
 - **`example-5-5-persistence-nosql`** — runnable document-store example using
   `ManagedNosqlClient` and the pynosqlc memory driver. Demonstrates `store()`,

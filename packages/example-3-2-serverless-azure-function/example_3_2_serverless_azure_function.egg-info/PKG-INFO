@@ -1,6 +1,6 @@
 Metadata-Version: 2.4
 Name: example-3-2-serverless-azure-function
-Version: 1.0.0
+Version: 1.1.0
 Summary: Step 3.2 — alt-python/boot Azure Functions serverless adapter
 Requires-Python: >=3.12
 Requires-Dist: alt-python-boot-lib

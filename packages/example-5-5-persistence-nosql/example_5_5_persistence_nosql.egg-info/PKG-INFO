@@ -1,6 +1,6 @@
 Metadata-Version: 2.4
 Name: example-5-5-persistence-nosql
-Version: 1.0.0
+Version: 1.1.0
 Summary: Step 5.5 — alt-python/boot-pynosqlc: auto-configured NoSQL client from config
 Requires-Python: >=3.12
 Requires-Dist: alt-python-boot-lib

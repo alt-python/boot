@@ -1,6 +1,6 @@
 [project]
 name = "example-5-4-persistence-flyway-multidb"
-version = "1.0.0"
+version = "1.1.0"
 description = "Step 5.4 — Multi-database Flyway migrations with alt-python/boot"
 requires-python = ">=3.12"
 dependencies = [

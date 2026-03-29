@@ -59,6 +59,8 @@ log.debug("This is suppressed unless logging.level.com.example is debug")
 | [`boot`](packages/boot) | One-call `Boot.boot()` entry point, banner, shared middleware pipeline |
 | [`boot-pydbc`](packages/boot-pydbc) | CDI auto-configuration for relational databases via pydbc |
 | [`boot-pynosqlc`](packages/boot-pynosqlc) | CDI auto-configuration for document stores via pynosqlc |
+| [`flyway`](packages/flyway) | Flyway-inspired versioned SQL migration engine |
+| [`boot-flyway`](packages/boot-flyway) | CDI auto-configuration for Flyway migrations |
 
 ### HTTP Adapters
 
@@ -87,6 +89,8 @@ packages/
   boot/                            # Boot bootstrap + middleware
   boot-pydbc/                      # SQL persistence starter
   boot-pynosqlc/                   # NoSQL persistence starter
+  flyway/                          # Flyway migration engine
+  boot-flyway/                     # Flyway CDI starter
   boot-aws-lambda/                 # AWS Lambda serverless adapter
   boot-azure-function/             # Azure Functions serverless adapter
   boot-gcp-cloudfunction/          # GCP Cloud Functions serverless adapter
@@ -95,7 +99,9 @@ packages/
   example-1-3-intro-cdi/           # CDI basics
   example-1-4-intro-cdi-advanced/  # Profiles, strategy, depends_on
   example-1-5-intro-boot/          # Boot bootstrap
-  example-5-2-persistence-pydbc/   # SQL persistence with PydbcTemplate
+  example-5-2-persistence-pydbc/   # SQL persistence with PydbcTemplate + Flyway
+  example-5-3-persistence-flyway/  # Single-datasource Flyway migrations
+  example-5-4-persistence-flyway-multidb/ # Multi-datasource Flyway migrations
   example-5-5-persistence-nosql/   # NoSQL persistence with ManagedNosqlClient
 docs/
   decisions/      # Architecture Decision Records (ADRs)
@@ -176,6 +182,8 @@ web = logger_factory.get_logger("other.pkg.Handler")       # → warn
 - **[cdi README](packages/cdi/README.md)** — CDI container, injection modes, profiles, and lifecycle
 - **[boot-pydbc README](packages/boot-pydbc/README.md)** — SQL persistence starter: PydbcTemplate, ConfiguredDataSource, SchemaInitializer, DataSourceBuilder
 - **[boot-pynosqlc README](packages/boot-pynosqlc/README.md)** — NoSQL persistence starter: ManagedNosqlClient, ConfiguredClientDataSource, NoSqlClientBuilder
+- **[flyway README](packages/flyway/README.md)** — Migration engine: Flyway, MigrationLoader, SchemaHistoryTable, MigrationExecutor, MigrationVersion, checksum
+- **[boot-flyway README](packages/boot-flyway/README.md)** — Flyway CDI starter: ManagedFlyway, flyway_auto_configuration, flyway_starter
 - **[boot-aws-lambda README](packages/boot-aws-lambda/README.md)** — AWS Lambda adapter: LambdaAdapter, controller registration, middleware pipeline
 - **[boot-azure-function README](packages/boot-azure-function/README.md)** — Azure Functions adapter: AzureFunctionAdapter, controller registration, middleware pipeline
 - **[boot-gcp-cloudfunction README](packages/boot-gcp-cloudfunction/README.md)** — GCP Cloud Functions adapter: GCPCloudFunctionAdapter, controller registration, middleware pipeline
@@ -223,7 +231,7 @@ Specific concepts ported from Spring:
 | `BeanPostProcessor` | `BeanPostProcessor` |
 | `ApplicationEvent` / `ApplicationListener` | CDI event bus in `ApplicationContext` |
 | `@Conditional` / `@ConditionalOnProperty` | `conditionalOnProperty`, `conditionalOnMissingBean` etc. |
-| `@EnableAutoConfiguration` / starters | `pydbc_auto_configuration()`, `lambda_starter()`, etc. |
+| `@EnableAutoConfiguration` / starters | `pydbc_auto_configuration()`, `lambda_starter()`, `flyway_starter()`, etc. |
 | Spring Security filter chain | `MiddlewarePipeline` — `__middleware__ = {"order": N}` |
 | `Environment` / `PropertySource` | `PropertySourceChain`, `EnvPropertySource` |
 | `application.properties` / `application.yml` | `ProfileConfigLoader` — same file conventions |
@@ -231,6 +239,7 @@ Specific concepts ported from Spring:
 | `@Profile` | `profiles = ['dev']` class attribute |
 | `JdbcTemplate` / `NamedParameterJdbcTemplate` | `PydbcTemplate` / `NamedParameterPydbcTemplate` |
 | Spring MVC `@RestController` / `@RequestMapping` | `__routes__` metadata on controller classes |
+| Flyway integration | `flyway` / `boot-flyway` packages |
 
 The Spring Framework is copyright VMware, Inc. / Broadcom. `@alt-python` began as an independent re-implementation
 in Javascript, and the python port is not affiliated with, endorsed by, or associated with VMware, Broadcom, 

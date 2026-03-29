@@ -111,7 +111,7 @@ dev = [
 
 [[package]]
 name = "alt-python-boot-aws-lambda"
-version = "1.0.0"
+version = "1.1.0"
 source = { editable = "packages/boot-aws-lambda" }
 dependencies = [
     { name = "alt-python-boot-lib" },
@@ -122,7 +122,7 @@ requires-dist = [{ name = "alt-python-boot-lib", editable = "packages/boot" }]
 
 [[package]]
 name = "alt-python-boot-azure-function"
-version = "1.0.0"
+version = "1.1.0"
 source = { editable = "packages/boot-azure-function" }
 dependencies = [
     { name = "alt-python-boot-lib" },
@@ -138,7 +138,7 @@ requires-dist = [
 
 [[package]]
 name = "alt-python-boot-flyway"
-version = "1.0.0"
+version = "1.1.0"
 source = { editable = "packages/boot-flyway" }
 dependencies = [
     { name = "alt-python-boot-pydbc" },
@@ -153,7 +153,7 @@ requires-dist = [
 
 [[package]]
 name = "alt-python-boot-gcp-cloudfunction"
-version = "1.0.0"
+version = "1.1.0"
 source = { editable = "packages/boot-gcp-cloudfunction" }
 dependencies = [
     { name = "alt-python-boot-lib" },
@@ -168,7 +168,7 @@ requires-dist = [
 
 [[package]]
 name = "alt-python-boot-lib"
-version = "1.0.0"
+version = "1.1.0"
 source = { editable = "packages/boot" }
 dependencies = [
     { name = "alt-python-cdi" },
@@ -185,7 +185,7 @@ requires-dist = [
 
 [[package]]
 name = "alt-python-boot-pydbc"
-version = "1.0.0"
+version = "1.1.0"
 source = { editable = "packages/boot-pydbc" }
 dependencies = [
     { name = "alt-python-boot-lib" },
@@ -204,7 +204,7 @@ requires-dist = [
 
 [[package]]
 name = "alt-python-boot-pynosqlc"
-version = "1.0.0"
+version = "1.1.0"
 source = { editable = "packages/boot-pynosqlc" }
 dependencies = [
     { name = "alt-python-boot-lib" },
@@ -223,7 +223,7 @@ requires-dist = [
 
 [[package]]
 name = "alt-python-cdi"
-version = "1.0.0"
+version = "1.1.0"
 source = { editable = "packages/cdi" }
 dependencies = [
     { name = "alt-python-config" },
@@ -238,12 +238,12 @@ requires-dist = [
 
 [[package]]
 name = "alt-python-common"
-version = "1.0.1"
+version = "1.1.0"
 source = { editable = "packages/common" }
 
 [[package]]
 name = "alt-python-config"
-version = "1.0.1"
+version = "1.1.0"
 source = { editable = "packages/config" }
 dependencies = [
     { name = "alt-python-common" },
@@ -260,7 +260,7 @@ requires-dist = [
 
 [[package]]
 name = "alt-python-flyway"
-version = "1.0.0"
+version = "1.1.0"
 source = { editable = "packages/flyway" }
 dependencies = [
     { name = "alt-python-boot-pydbc" },
@@ -271,7 +271,7 @@ requires-dist = [{ name = "alt-python-boot-pydbc", editable = "packages/boot-pyd
 
 [[package]]
 name = "alt-python-logger"
-version = "1.0.1"
+version = "1.1.0"
 source = { editable = "packages/logger" }
 dependencies = [
     { name = "alt-python-common" },
@@ -323,7 +323,7 @@ requires-dist = [{ name = "alt-python-pynosqlc-core", editable = "../pynosqlc/pa
 
 [[package]]
 name = "alt-python-pysypt"
-version = "1.0.1"
+version = "1.1.0"
 source = { editable = "packages/pysypt" }
 dependencies = [
     { name = "alt-python-common" },
@@ -629,7 +629,7 @@ wheels = [
 
 [[package]]
 name = "example-1-1-intro-config"
-version = "1.0.0"
+version = "1.1.0"
 source = { virtual = "packages/example-1-1-intro-config" }
 dependencies = [
     { name = "alt-python-config" },
@@ -640,7 +640,7 @@ requires-dist = [{ name = "alt-python-config", editable = "packages/config" }]
 
 [[package]]
 name = "example-1-2-intro-logger"
-version = "1.0.0"
+version = "1.1.0"
 source = { virtual = "packages/example-1-2-intro-logger" }
 dependencies = [
     { name = "alt-python-config" },
@@ -655,7 +655,7 @@ requires-dist = [
 
 [[package]]
 name = "example-1-3-intro-cdi"
-version = "1.0.0"
+version = "1.1.0"
 source = { editable = "packages/example-1-3-intro-cdi" }
 dependencies = [
     { name = "alt-python-cdi" },
@@ -672,7 +672,7 @@ requires-dist = [
 
 [[package]]
 name = "example-1-4-intro-cdi-advanced"
-version = "1.0.0"
+version = "1.1.0"
 source = { editable = "packages/example-1-4-intro-cdi-advanced" }
 dependencies = [
     { name = "alt-python-cdi" },
@@ -689,7 +689,7 @@ requires-dist = [
 
 [[package]]
 name = "example-1-5-intro-boot"
-version = "1.0.0"
+version = "1.1.0"
 source = { editable = "packages/example-1-5-intro-boot" }
 dependencies = [
     { name = "alt-python-boot-lib" },
@@ -704,7 +704,7 @@ requires-dist = [
 
 [[package]]
 name = "example-3-1-serverless-lambda"
-version = "1.0.0"
+version = "1.1.0"
 source = { editable = "packages/example-3-1-serverless-lambda" }
 dependencies = [
     { name = "alt-python-boot-aws-lambda" },
@@ -719,7 +719,7 @@ requires-dist = [
 
 [[package]]
 name = "example-3-2-serverless-azure-function"
-version = "1.0.0"
+version = "1.1.0"
 source = { editable = "packages/example-3-2-serverless-azure-function" }
 dependencies = [
     { name = "alt-python-boot-azure-function" },
@@ -737,7 +737,7 @@ requires-dist = [
 
 [[package]]
 name = "example-3-3-serverless-gcp-cloudfunction"
-version = "1.0.0"
+version = "1.1.0"
 source = { editable = "packages/example-3-3-serverless-gcp-cloudfunction" }
 dependencies = [
     { name = "alt-python-boot-gcp-cloudfunction" },
@@ -754,7 +754,7 @@ requires-dist = [
 
 [[package]]
 name = "example-5-2-persistence-pydbc"
-version = "1.0.0"
+version = "1.1.0"
 source = { editable = "packages/example-5-2-persistence-pydbc" }
 dependencies = [
     { name = "alt-python-boot-lib" },
@@ -771,7 +771,7 @@ requires-dist = [
 
 [[package]]
 name = "example-5-3-persistence-flyway"
-version = "1.0.0"
+version = "1.1.0"
 source = { editable = "packages/example-5-3-persistence-flyway" }
 dependencies = [
     { name = "alt-python-boot-flyway" },
@@ -786,7 +786,7 @@ requires-dist = [
 
 [[package]]
 name = "example-5-4-persistence-flyway-multidb"
-version = "1.0.0"
+version = "1.1.0"
 source = { editable = "packages/example-5-4-persistence-flyway-multidb" }
 dependencies = [
     { name = "alt-python-boot-flyway" },
@@ -801,7 +801,7 @@ requires-dist = [
 
 [[package]]
 name = "example-5-5-persistence-nosql"
-version = "1.0.0"
+version = "1.1.0"
 source = { editable = "packages/example-5-5-persistence-nosql" }
 dependencies = [
     { name = "alt-python-boot-lib" },
