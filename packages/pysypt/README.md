@@ -14,7 +14,7 @@ Python.
 ## Install
 
 ```bash
-uv add pysypt        # or: pip install pysypt
+uv add alt-python-pysypt        # or: pip install alt-python-pysypt
 ```
 
 Requires Python 3.12+ and `cryptography` >= 42.

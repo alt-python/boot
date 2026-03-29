@@ -15,8 +15,7 @@ Part of the [`alt-python/boot`](https://github.com/alt-python/boot) monorepo.
 ## Quick Start
 
 ```bash
-# pynosqlc packages are not on PyPI — use path sources (see Installation)
-uv add alt-python-boot-pynosqlc
+uv add alt-python-boot-pynosqlc   # or: pip install alt-python-boot-pynosqlc
 ```
 
 ```python

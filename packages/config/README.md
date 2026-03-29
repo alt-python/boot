@@ -15,7 +15,7 @@ to Python.
 ## Install
 
 ```bash
-uv add config        # or: pip install config
+uv add alt-python-config        # or: pip install alt-python-config
 ```
 
 Requires Python 3.12+, `PyYAML` >= 6 (for YAML files), and `pysypt` (for

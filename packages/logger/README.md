@@ -16,7 +16,7 @@ to Python.
 ## Install
 
 ```bash
-uv add logger        # or: pip install logger
+uv add alt-python-logger        # or: pip install alt-python-logger
 ```
 
 Requires Python 3.12+ and the `config` package (workspace dependency).

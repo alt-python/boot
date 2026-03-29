@@ -27,7 +27,7 @@ gap.
 ## Quick Start
 
 ```bash
-uv add pysypt config logger   # or: pip install pysypt config logger
+uv add alt-python-pysypt alt-python-config alt-python-logger   # or: pip install alt-python-pysypt alt-python-config alt-python-logger
 ```
 
 ```python
@@ -176,6 +176,18 @@ web = logger_factory.get_logger("other.pkg.Handler")       # → warn
 
 ## Documentation
 
+### Guides
+
+- **[Getting Started](docs/getting-started.md)** — Install, first application, lifecycle hooks, config injection
+- **[Configuration](docs/configuration.md)** — File formats, profiles, environment variables, placeholder resolution, encrypted values
+- **[Dependency Injection](docs/dependency-injection.md)** — Scopes, autowiring, profiles, `depends_on`, explicit wiring
+- **[Lifecycle](docs/lifecycle.md)** — Full lifecycle sequence, `init()`, `destroy()`, `run()`, `Boot.test()`
+- **[Database Access](docs/database.md)** — PydbcTemplate, Flyway migrations, secondary datasources, SQLite gotchas
+- **[HTTP and Serverless Adapters](docs/http-adapters.md)** — Controllers, middleware pipeline, Lambda / Azure Functions / GCP
+- **[Spring Comparison](docs/spring-comparison.md)** — Mapping Spring concepts to alt-python equivalents, key differences
+
+### Package READMEs
+
 - **[pysypt README](packages/pysypt/README.md)** — PBE encryption API and algorithm reference
 - **[config README](packages/config/README.md)** — Config sources, profiles, formats, and value resolution
 - **[logger README](packages/logger/README.md)** — Logger hierarchy, levels, formatters, and test utilities
@@ -204,6 +216,7 @@ web = logger_factory.get_logger("other.pkg.Handler")       # → warn
 | [ADR-010](docs/decisions/ADR-010-pydbc-template-bundled-in-boot-pydbc.md) | PydbcTemplate bundled inside boot-pydbc |
 | [ADR-011](docs/decisions/ADR-011-cdi-config-via-ctx-get.md) | CDI beans access config via ctx.get('config') |
 | [ADR-012](docs/decisions/ADR-012-cdi-lifecycle-methods-synchronous.md) | CDI lifecycle methods must be synchronous |
+| [ADR-013](docs/decisions/ADR-013-managed-flyway-synchronous-init.md) | ManagedFlyway uses synchronous init() — no ready() needed |
 
 ## Running Tests
 

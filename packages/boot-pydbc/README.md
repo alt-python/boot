@@ -23,6 +23,7 @@ uv add alt-python-boot-pydbc pydbc-sqlite
 import os
 os.chdir(os.path.dirname(os.path.abspath(__file__)))  # resolve config/ relative to this file
 
+import pydbc_sqlite  # registers the SQLite driver
 from boot import Boot
 from cdi import Context, Singleton
 from boot_pydbc import pydbc_auto_configuration
