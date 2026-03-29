@@ -1,0 +1,24 @@
+[project]
+name = "alt-python-boot-flyway"
+version = "1.0.0"
+description = "Flyway-inspired migration starter for alt-python/boot"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "alt-python-flyway",
+    "alt-python-boot-pydbc",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["boot_flyway"]
+
+[tool.uv.sources]
+alt-python-flyway = { workspace = true }
+alt-python-boot-pydbc = { workspace = true }
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

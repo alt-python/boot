@@ -28,3 +28,4 @@ coverage/
 tmp/
 .bg_shell
 /.bg-shell/
+*.egg-info/

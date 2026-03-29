@@ -11,6 +11,8 @@ dependencies = [
     "alt-python-cdi",
     "alt-python-boot-lib",
     "alt-python-boot-pydbc",
+    "alt-python-flyway",
+    "alt-python-boot-flyway",
     "alt-python-boot-pynosqlc",
     "alt-python-boot-aws-lambda",
     "alt-python-boot-azure-function",
@@ -22,6 +24,8 @@ dependencies = [
     "example-3-2-serverless-azure-function",
     "example-3-3-serverless-gcp-cloudfunction",
     "example-5-2-persistence-pydbc",
+    "example-5-3-persistence-flyway",
+    "example-5-4-persistence-flyway-multidb",
     "example-5-5-persistence-nosql",
 ]
 
@@ -39,6 +43,8 @@ members = [
     "packages/example-1-5-intro-boot",
     "packages/boot",
     "packages/boot-pydbc",
+    "packages/flyway",
+    "packages/boot-flyway",
     "packages/boot-pynosqlc",
     "packages/boot-aws-lambda",
     "packages/boot-azure-function",
@@ -47,6 +53,8 @@ members = [
     "packages/example-3-2-serverless-azure-function",
     "packages/example-3-3-serverless-gcp-cloudfunction",
     "packages/example-5-2-persistence-pydbc",
+    "packages/example-5-3-persistence-flyway",
+    "packages/example-5-4-persistence-flyway-multidb",
     "packages/example-5-5-persistence-nosql",
 ]
 
@@ -58,6 +66,8 @@ alt-python-logger = { workspace = true }
 alt-python-cdi = { workspace = true }
 alt-python-boot-lib = { workspace = true }
 alt-python-boot-pydbc = { workspace = true }
+alt-python-flyway = { workspace = true }
+alt-python-boot-flyway = { workspace = true }
 alt-python-boot-pynosqlc = { workspace = true }
 alt-python-pynosqlc-core = { path = "/Users/craig/src/github/alt-python/pynosqlc/packages/core", editable = true }
 alt-python-pynosqlc-memory = { path = "/Users/craig/src/github/alt-python/pynosqlc/packages/memory", editable = true }
@@ -71,6 +81,8 @@ example-3-1-serverless-lambda = { workspace = true }
 example-3-2-serverless-azure-function = { workspace = true }
 example-3-3-serverless-gcp-cloudfunction = { workspace = true }
 example-5-2-persistence-pydbc = { workspace = true }
+example-5-3-persistence-flyway = { workspace = true }
+example-5-4-persistence-flyway-multidb = { workspace = true }
 example-5-5-persistence-nosql = { workspace = true }
 
 [dependency-groups]

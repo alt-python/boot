@@ -1,0 +1,15 @@
+[project]
+name = "example-5-3-persistence-flyway"
+version = "1.0.0"
+description = "Step 5.3 — Flyway-managed SQL migrations with alt-python/boot"
+requires-python = ">=3.12"
+dependencies = [
+    "alt-python-boot-flyway",
+    "alt-python-pydbc-sqlite>=1.0.0",
+]
+
+[tool.uv.sources]
+alt-python-boot-flyway = { workspace = true }
+
+[tool.setuptools]
+packages = []

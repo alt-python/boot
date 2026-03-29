@@ -1,0 +1,20 @@
+{
+  "app": {
+    "name": "Flyway Persistence Example",
+    "version": "1.0.0"
+  },
+  "boot": {
+    "banner-mode": "console",
+    "datasource": {
+      "url": "pydbc:sqlite::memory:",
+      "pool": { "enabled": true, "max": 2 }
+    },
+    "flyway": {
+      "locations": "db/migration"
+    }
+  },
+  "logging": {
+    "format": "text",
+    "level": { "/": "warn" }
+  }
+}
