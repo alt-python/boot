@@ -26,7 +26,7 @@ jobs:
         run: uv sync --all-packages
 
       - name: Run tests
-        run: uv run pytest packages/pysypt/tests/ packages/config/tests/ packages/logger/tests/ -v
+        run: uv run pytest packages/pysypt/tests/ packages/config/tests/ packages/logger/tests/ packages/cdi/tests/ packages/boot/tests/ packages/flyway/tests/ packages/boot-pydbc/tests/ packages/boot-pynosqlc/tests/ packages/boot-flyway/tests/ packages/boot-aws-lambda/tests/ packages/boot-azure-function/tests/ packages/boot-gcp-cloudfunction/tests/ -v
 
   publish:
     name: Publish to PyPI
@@ -55,6 +55,15 @@ jobs:
           uv build --package alt-python-pysypt
           uv build --package alt-python-config
           uv build --package alt-python-logger
+          uv build --package alt-python-cdi
+          uv build --package alt-python-boot-lib
+          uv build --package alt-python-flyway
+          uv build --package alt-python-boot-pydbc
+          uv build --package alt-python-boot-pynosqlc
+          uv build --package alt-python-boot-flyway
+          uv build --package alt-python-boot-aws-lambda
+          uv build --package alt-python-boot-azure-function
+          uv build --package alt-python-boot-gcp-cloudfunction
 
       - name: Publish to PyPI
         env:

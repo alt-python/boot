@@ -1,6 +1,6 @@
 [project]
 name = "alt-python-boot-flyway"
-version = "1.1.0"
+version = "1.1.1"
 description = "Flyway-inspired migration starter for alt-python/boot"
 readme = "README.md"
 requires-python = ">=3.12"

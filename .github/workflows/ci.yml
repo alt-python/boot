@@ -31,4 +31,4 @@ jobs:
         run: uv sync --all-packages
 
       - name: Run tests
-        run: uv run pytest packages/pysypt/tests/ packages/config/tests/ packages/logger/tests/ -v
+        run: uv run pytest packages/pysypt/tests/ packages/config/tests/ packages/logger/tests/ packages/cdi/tests/ packages/boot/tests/ packages/flyway/tests/ packages/boot-pydbc/tests/ packages/boot-pynosqlc/tests/ packages/boot-flyway/tests/ packages/boot-aws-lambda/tests/ packages/boot-azure-function/tests/ packages/boot-gcp-cloudfunction/tests/ -v

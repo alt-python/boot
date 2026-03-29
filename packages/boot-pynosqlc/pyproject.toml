@@ -1,6 +1,6 @@
 [project]
 name = "alt-python-boot-pynosqlc"
-version = "1.1.0"
+version = "1.1.1"
 description = "Spring Boot-style CDI auto-configuration for pynosqlc (NoSQL document store)"
 readme = "README.md"
 requires-python = ">=3.12"

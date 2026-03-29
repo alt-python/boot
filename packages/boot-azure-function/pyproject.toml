@@ -1,6 +1,6 @@
 [project]
 name = "alt-python-boot-azure-function"
-version = "1.1.0"
+version = "1.1.1"
 description = "Azure Function adapter for alt-python/boot"
 requires-python = ">=3.12"
 dependencies = [

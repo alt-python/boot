@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.1] — 2026-03-29
+
+### Fixed
+
+- **CI / publish workflows** — added all 9 missing publishable packages (`cdi`,
+  `boot`, `flyway`, `boot-pydbc`, `boot-pynosqlc`, `boot-flyway`,
+  `boot-aws-lambda`, `boot-azure-function`, `boot-gcp-cloudfunction`) to the
+  test matrix in `ci.yml` and to both the test step and `uv build` list in
+  `publish.yml`. Previously only `pysypt`, `config`, `logger`, and `common`
+  were covered.
+
 ## [1.1.0] — 2026-03-29
 
 ### Added
@@ -192,7 +203,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **`uv` workspace** — monorepo managed with `uv`. All packages are workspace members;
   inter-package dependencies declared via `tool.uv.sources`.
 
-[Unreleased]: https://github.com/alt-python/boot/compare/v1.1.0...HEAD
+[Unreleased]: https://github.com/alt-python/boot/compare/v1.1.1...HEAD
+[1.1.1]: https://github.com/alt-python/boot/compare/v1.1.0...v1.1.1
 [1.1.0]: https://github.com/alt-python/boot/compare/v1.0.1...v1.1.0
 [1.0.1]: https://github.com/alt-python/boot/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/alt-python/boot/releases/tag/v1.0.0
