@@ -69,8 +69,7 @@ alt-python-boot-pydbc = { workspace = true }
 alt-python-flyway = { workspace = true }
 alt-python-boot-flyway = { workspace = true }
 alt-python-boot-pynosqlc = { workspace = true }
-alt-python-pynosqlc-core = { path = "/Users/craig/src/github/alt-python/pynosqlc/packages/core", editable = true }
-alt-python-pynosqlc-memory = { path = "/Users/craig/src/github/alt-python/pynosqlc/packages/memory", editable = true }
+
 alt-python-boot-aws-lambda = { workspace = true }
 alt-python-boot-azure-function = { workspace = true }
 alt-python-boot-gcp-cloudfunction = { workspace = true }

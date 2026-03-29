@@ -80,29 +80,14 @@ registered but its `_delegate` is `None`. Calling `get_collection()` will raise
 `RuntimeError('NoSQL client not ready')`. This lets you deploy with an optional
 NoSQL client without breaking CDI wiring.
 
-## Installation
+## Install
 
-`alt-python-pynosqlc-core` and `alt-python-pynosqlc-memory` are not on PyPI.
-Add them as editable path sources pointing to the local `pynosqlc` repository in
-both your package's `pyproject.toml` and the workspace root `pyproject.toml`:
-
-```toml
-# pyproject.toml (package level)
-[tool.uv.sources]
-alt-python-pynosqlc-core   = { path = "/path/to/pynosqlc/packages/core",   editable = true }
-alt-python-pynosqlc-memory = { path = "/path/to/pynosqlc/packages/memory", editable = true }
+```bash
+uv add alt-python-boot-pynosqlc   # or: pip install alt-python-boot-pynosqlc
 ```
 
-```toml
-# pyproject.toml (workspace root)
-[tool.uv.sources]
-alt-python-pynosqlc-core   = { path = "/path/to/pynosqlc/packages/core",   editable = true }
-alt-python-pynosqlc-memory = { path = "/path/to/pynosqlc/packages/memory", editable = true }
-```
-
-Both levels must use `editable = true`. The pynosqlc-memory package declares
-pynosqlc-core as an editable workspace dependency; a mixed editable/non-editable
-reference from boot-pynosqlc causes uv to raise a "conflicting URLs" error.
+Requires Python 3.12+, `alt-python-boot-lib`, `alt-python-pynosqlc-core`, and
+`alt-python-pynosqlc-memory`. All dependencies are available on PyPI.
 
 ## Working with Collections
 

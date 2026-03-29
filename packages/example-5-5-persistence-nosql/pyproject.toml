@@ -12,4 +12,3 @@ dependencies = [
 [tool.uv.sources]
 alt-python-boot-lib = { workspace = true }
 alt-python-boot-pynosqlc = { workspace = true }
-alt-python-pynosqlc-memory = { path = "/Users/craig/src/github/alt-python/pynosqlc/packages/memory", editable = true }

@@ -21,8 +21,6 @@ packages = ["boot_pynosqlc"]
 [tool.uv.sources]
 alt-python-cdi = { workspace = true }
 alt-python-boot-lib = { workspace = true }
-alt-python-pynosqlc-core = { path = "/Users/craig/src/github/alt-python/pynosqlc/packages/core", editable = true }
-alt-python-pynosqlc-memory = { path = "/Users/craig/src/github/alt-python/pynosqlc/packages/memory", editable = true }
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
