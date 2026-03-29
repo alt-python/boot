@@ -1,6 +1,6 @@
 [project]
 name = "example-1-1-intro-config"
-version = "1.0.0"
+version = "1.1.0"
 description = "Step 1.1 — alt-python/config standalone introduction"
 requires-python = ">=3.12"
 dependencies = [

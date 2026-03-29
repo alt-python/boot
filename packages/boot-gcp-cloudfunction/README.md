@@ -1,49 +1,49 @@
-# alt-python-boot-azure-function
+# alt-python-boot-gcp-cloudfunction
 
 [![Language](https://img.shields.io/badge/language-Python-3776ab.svg)](https://www.python.org/)
 [![Python](https://img.shields.io/badge/python-3.12%2B-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-Azure Functions adapter for the alt-python/boot framework. Handles Azure
-Functions v2 HTTP trigger requests with CDI-managed controllers and a CDI
-middleware pipeline for cross-cutting concerns.
+GCP Cloud Functions adapter for the alt-python/boot framework. Handles GCP
+Cloud Functions HTTP trigger requests (passed as `flask.Request`) with
+CDI-managed controllers and a CDI middleware pipeline for cross-cutting
+concerns.
 
 Part of the [`alt-python/boot`](https://github.com/alt-python/boot) monorepo.
 
 ## Install
 
 ```bash
-uv add alt-python-boot-azure-function   # or: pip install alt-python-boot-azure-function
+uv add alt-python-boot-gcp-cloudfunction   # or: pip install alt-python-boot-gcp-cloudfunction
 ```
 
-Requires Python 3.12+, `alt-python-boot-lib`, and `azure-functions`.
+Requires Python 3.12+, `alt-python-boot-lib`, and `flask`.
 
 ## Quick Start
 
 ```python
-# function_app.py
+# main.py
 import asyncio
-import azure.functions as func
 from boot import Boot
 from cdi import Context, Singleton
-from boot_azure_function import azure_function_starter
+from boot_gcp_cloudfunction import gcp_cloudfunction_starter
 from services import TodoService
 from controllers import TodoController
 
 context = Context([
-    *azure_function_starter(),
+    *gcp_cloudfunction_starter(),
     Singleton(TodoService),
     Singleton(TodoController),
 ])
 
+# Boot once — module-level initialisation; reused on warm invocations
 app_ctx = Boot.boot({'contexts': [context]})
-app = func.FunctionApp(http_auth_level=func.AuthLevel.ANONYMOUS)
 
 
-@app.route(route="{*route}", methods=["GET", "POST", "PUT", "DELETE", "PATCH"])
-def http_handler(req: func.HttpRequest) -> func.HttpResponse:
-    adapter = app_ctx.get('azure_function_adapter')
-    return asyncio.run(adapter.handle(req))
+def handler(request):
+    """GCP Cloud Functions entry point."""
+    adapter = app_ctx.get('gcp_cloud_function_adapter')
+    return asyncio.run(adapter.handle(request))
 ```
 
 ## Controller Convention
@@ -78,11 +78,11 @@ Handler methods receive a normalised `request` dict and return one of:
 - `{'statusCode': N, 'body': ...}` → explicit status code
 - `None` or `{}` → 204 No Content
 
-The adapter returns `azure.functions.HttpResponse`.
+The adapter returns `flask.Response`.
 
 ## Middleware Pipeline
 
-`azure_function_starter()` registers three built-in middleware components:
+`gcp_cloudfunction_starter()` registers three built-in middleware components:
 
 | Component | Order | Behaviour |
 |---|---|---|
@@ -97,7 +97,7 @@ class AuthMiddleware:
     __middleware__ = {"order": 5}
 
     async def handle(self, request, next_fn):
-        token = request.get('headers', {}).get('authorization', '').removeprefix('Bearer ')
+        token = request.get('headers', {}).get('Authorization', '').removeprefix('Bearer ')
         if not token:
             return {'statusCode': 401, 'body': {'error': 'Unauthorized'}}
         return await next_fn({**request, 'user': {'token': token}})
@@ -111,16 +111,18 @@ The normalised request dict passed to middleware and handlers:
 {
     'method':  'GET',
     'path':    '/todos/42',
-    'params':  {'id': '42'},       # from func.HttpRequest.route_params
+    'params':  {'id': '42'},    # extracted by URL segment matching
     'query':   {'page': '1'},
-    'headers': {'authorization': 'Bearer token'},
+    'headers': {'Authorization': 'Bearer token'},
     'body':    None,
     'ctx':     app_ctx,
 }
 ```
 
-Azure Functions pre-populates path parameters in `func.HttpRequest.route_params`;
-the adapter merges them into `request['params']` directly.
+GCP Cloud Functions receive a `flask.Request` with no pre-populated route
+parameters. The adapter extracts path parameters by comparing URL segments
+against the registered route pattern. Pass the full URL path (e.g.
+`/todos/42`) — the adapter splits it on `/` and matches `{id}` segments.
 
 ## Route Registration
 
@@ -153,29 +155,24 @@ class CustomController:
 
 ## Testing
 
-Use `werkzeug.test.EnvironBuilder` to construct `azure.functions.HttpRequest`
-objects without a running Azure Functions host:
+Use `werkzeug.test.EnvironBuilder` to construct `flask.Request` objects without
+a running GCP Functions Framework:
 
 ```python
 import asyncio
-import azure.functions as func
+from flask import Request as FlaskRequest
+from werkzeug.test import EnvironBuilder
 
 
-def make_request(method, url, body=None, route_params=None):
-    return func.HttpRequest(
-        method=method,
-        url=url,
-        headers={},
-        params={},
-        route_params=route_params or {},
-        body=body or b'',
-    )
+def flask_req(method, path, data=None, content_type='application/json'):
+    builder = EnvironBuilder(method=method, path=path, data=data, content_type=content_type)
+    return FlaskRequest(builder.get_environ())
 
 
 def test_list_todos():
-    from function_app import app_ctx
-    adapter = app_ctx.get('azure_function_adapter')
-    req = make_request('GET', 'http://localhost/todos')
+    from main import app_ctx
+    adapter = app_ctx.get('gcp_cloud_function_adapter')
+    req = flask_req('GET', '/todos')
     response = asyncio.run(adapter.handle(req))
     assert response.status_code == 200
 ```

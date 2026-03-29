@@ -64,8 +64,8 @@ log.debug("This is suppressed unless logging.level.com.example is debug")
 
 | Package | Purpose |
 |---|---|
-| [`boot-fastapi`](packages/boot-fastapi) | FastAPI adapter — CDI controller registration, background server thread |
-| [`boot-flask`](packages/boot-flask) | Flask adapter — CDI controller registration, background server thread |
+| `boot-fastapi` | FastAPI adapter — CDI controller registration, background server thread *(coming soon)* |
+| `boot-flask` | Flask adapter — CDI controller registration, background server thread *(coming soon)* |
 
 ### Serverless Adapters
 
@@ -87,8 +87,6 @@ packages/
   boot/                            # Boot bootstrap + middleware
   boot-pydbc/                      # SQL persistence starter
   boot-pynosqlc/                   # NoSQL persistence starter
-  boot-fastapi/                    # FastAPI HTTP adapter
-  boot-flask/                      # Flask HTTP adapter
   boot-aws-lambda/                 # AWS Lambda serverless adapter
   boot-azure-function/             # Azure Functions serverless adapter
   boot-gcp-cloudfunction/          # GCP Cloud Functions serverless adapter
@@ -178,6 +176,9 @@ web = logger_factory.get_logger("other.pkg.Handler")       # → warn
 - **[cdi README](packages/cdi/README.md)** — CDI container, injection modes, profiles, and lifecycle
 - **[boot-pydbc README](packages/boot-pydbc/README.md)** — SQL persistence starter: PydbcTemplate, ConfiguredDataSource, SchemaInitializer, DataSourceBuilder
 - **[boot-pynosqlc README](packages/boot-pynosqlc/README.md)** — NoSQL persistence starter: ManagedNosqlClient, ConfiguredClientDataSource, NoSqlClientBuilder
+- **[boot-aws-lambda README](packages/boot-aws-lambda/README.md)** — AWS Lambda adapter: LambdaAdapter, controller registration, middleware pipeline
+- **[boot-azure-function README](packages/boot-azure-function/README.md)** — Azure Functions adapter: AzureFunctionAdapter, controller registration, middleware pipeline
+- **[boot-gcp-cloudfunction README](packages/boot-gcp-cloudfunction/README.md)** — GCP Cloud Functions adapter: GCPCloudFunctionAdapter, controller registration, middleware pipeline
 
 ### Architecture Decision Records
 
@@ -212,29 +213,27 @@ The design of `@alt-python` is directly influenced by the [Spring Framework](htt
 
 Specific concepts ported from Spring:
 
-| Spring concept | @alt-javascript equivalent |
+| Spring concept | alt-python equivalent |
 |---|---|
-| `ApplicationContext` | `@alt-javascript/cdi` `ApplicationContext` |
+| `ApplicationContext` | `alt-python-cdi` `ApplicationContext` |
 | `@Component`, `@Service`, `@Repository` | `Singleton`, `Service`, `ComponentRegistry` |
-| `@Autowired` (field injection) | Null-property naming convention (`this.service = null`) |
-| `@Value("${key:default}")` | Property placeholder strings in component constructors |
+| `@Autowired` (field injection) | Null-property naming convention (`self.service = None`) |
+| `@Value("${key:default}")` | Property placeholder strings in `__init__` |
 | `@PostConstruct` / `@PreDestroy` | `init()` / `destroy()` lifecycle methods |
 | `BeanPostProcessor` | `BeanPostProcessor` |
-| `ApplicationEvent` / `ApplicationListener` | `ApplicationEvent`, event bus in `ApplicationContext` |
+| `ApplicationEvent` / `ApplicationListener` | CDI event bus in `ApplicationContext` |
 | `@Conditional` / `@ConditionalOnProperty` | `conditionalOnProperty`, `conditionalOnMissingBean` etc. |
-| `@EnableAutoConfiguration` / starters | `expressStarter()`, `fastifyStarter()`, etc. |
-| `@Aspect` / AOP Alliance | `createProxy()`, `matchMethod()`, advice functions |
+| `@EnableAutoConfiguration` / starters | `pydbc_auto_configuration()`, `lambda_starter()`, etc. |
+| Spring Security filter chain | `MiddlewarePipeline` — `__middleware__ = {"order": N}` |
 | `Environment` / `PropertySource` | `PropertySourceChain`, `EnvPropertySource` |
 | `application.properties` / `application.yml` | `ProfileConfigLoader` — same file conventions |
-| `spring.profiles.active` | `NODE_ACTIVE_PROFILES` |
-| `@Profile` | `conditionalOnProfile()` |
-| `JdbcTemplate` / `NamedParameterJdbcTemplate` | `JsdbcTemplate` / `NamedParameterJsdbcTemplate` |
-| `Flyway` integration | `@alt-javascript/boot-flyway` / `@alt-javascript/flyway` |
-| Spring MVC `@RestController` / `@RequestMapping` | `static __routes` metadata on controller classes |
-| Spring Security filter chain | `MiddlewarePipeline` — `static __middleware = { order: N }` |
+| `spring.profiles.active` | `PY_ACTIVE_PROFILES` |
+| `@Profile` | `profiles = ['dev']` class attribute |
+| `JdbcTemplate` / `NamedParameterJdbcTemplate` | `PydbcTemplate` / `NamedParameterPydbcTemplate` |
+| Spring MVC `@RestController` / `@RequestMapping` | `__routes__` metadata on controller classes |
 
 The Spring Framework is copyright VMware, Inc. / Broadcom. `@alt-python` began as an independent re-implementation
-in Javascript, boit it and the python port are not affiliated with, endorsed by, or associated with VMware, Broadcom, 
+in Javascript, and the python port is not affiliated with, endorsed by, or associated with VMware, Broadcom, 
 or the Spring team.
 
 > Spring Framework and Spring Boot are trademarks of VMware, Inc. / Broadcom.

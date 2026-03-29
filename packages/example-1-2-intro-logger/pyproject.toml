@@ -1,6 +1,6 @@
 [project]
 name = "example-1-2-intro-logger"
-version = "1.0.0"
+version = "1.1.0"
 description = "Step 1.2 — alt-python/logger + config"
 requires-python = ">=3.12"
 dependencies = [

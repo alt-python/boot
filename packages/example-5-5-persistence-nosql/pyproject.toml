@@ -1,6 +1,6 @@
 [project]
 name = "example-5-5-persistence-nosql"
-version = "1.0.0"
+version = "1.1.0"
 description = "Step 5.5 — alt-python/boot-pynosqlc: auto-configured NoSQL client from config"
 requires-python = ">=3.12"
 dependencies = [

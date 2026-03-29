@@ -1,6 +1,6 @@
 [project]
 name = "example-3-3-serverless-gcp-cloudfunction"
-version = "1.0.0"
+version = "1.1.0"
 description = "Step 3.3 — alt-python/boot GCP Cloud Functions serverless adapter"
 requires-python = ">=3.12"
 dependencies = [

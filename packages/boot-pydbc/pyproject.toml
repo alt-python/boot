@@ -1,6 +1,6 @@
 [project]
 name = "alt-python-boot-pydbc"
-version = "1.0.0"
+version = "1.1.0"
 description = "Spring Boot-style CDI auto-configuration for pydbc (relational DB)"
 readme = "README.md"
 requires-python = ">=3.12"

@@ -1,6 +1,6 @@
 [project]
 name = "example-1-4-intro-cdi-advanced"
-version = "1.0.0"
+version = "1.1.0"
 description = "Step 1.4 — alt-python/cdi advanced: profiles, prototype, depends_on, primary"
 requires-python = ">=3.12"
 dependencies = [

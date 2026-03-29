@@ -1,6 +1,6 @@
 [project]
 name = "example-3-2-serverless-azure-function"
-version = "1.0.0"
+version = "1.1.0"
 description = "Step 3.2 — alt-python/boot Azure Functions serverless adapter"
 requires-python = ">=3.12"
 dependencies = [
